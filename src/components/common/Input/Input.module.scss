@@ -1,0 +1,52 @@
+.wrapper {
+    width: 100%;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 8px;
+  
+    font-size: 14px;
+    font-weight: 500;
+  
+    color: #3a4354;
+  }
+  
+  .input {
+    width: 100%;
+    height: 48px;
+  
+    border: 1px solid #d9dee8;
+    border-radius: 8px;
+  
+    padding: 0 16px;
+    font-size: 14px;
+  
+    outline: none;
+  }
+  
+  .input:focus {
+    border-color: #617af4;
+  }
+
+  /* Number Input */
+.input[type="number"] {
+  padding-right: 8px;
+}
+
+/* Chrome, Edge, Safari */
+.input[type="number"]::-webkit-inner-spin-button,
+.input[type="number"]::-webkit-outer-spin-button {
+  opacity: 0.4;
+  height: 20px;
+  width: 1px;
+  cursor: pointer;
+}
+
+  
+  .error {
+    color: #e53935;
+    font-size: 12px;
+    margin-top: 4px;
+    display: block;
+  }
