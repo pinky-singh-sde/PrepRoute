@@ -1,0 +1,57 @@
+.sidebar {
+    width: 240px;
+    min-height: 100vh;
+  
+    border-right: 1px solid #edf1f7;
+    background: #fff;
+  
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .logoContainer {
+    height: 80px;
+  
+    display: flex;
+    align-items: center;
+  
+    padding: 0 20px;
+  
+    // border-bottom: 1px solid #edf1f7;
+  }
+  
+  .logoContainer img {
+    width: 140px;
+  }
+  
+  nav {
+    padding: 20px 12px;
+  }
+  
+  .link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  
+    text-decoration: none;
+  
+    color: #667085;
+  
+    padding: 14px 16px;
+    border-radius: 8px;
+  
+    margin-bottom: 6px;
+  
+    transition: all 0.2s ease;
+  }
+  
+  .link:hover {
+    background: #f5f7ff;
+  }
+  
+  .active {
+    background: #eef2ff;
+    color: #617af4;
+  
+    border-left: 3px solid #617af4;
+  }

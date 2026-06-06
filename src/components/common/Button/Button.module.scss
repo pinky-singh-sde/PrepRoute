@@ -1,0 +1,33 @@
+.button {
+    height: 48px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  
+    font-size: 14px;
+    font-weight: 500;
+  
+    transition: 0.2s ease;
+  }
+  
+  .primary {
+    background: #617af4;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+  }
+  
+  .primary:hover {
+    opacity: 0.95;
+  }
+  
+  .secondary {
+    background: #f3f5fb;
+    color: #617af4;
+    padding: 10px;
+
+  }
+  
+  .fullWidth {
+    width: 100%;
+  }
