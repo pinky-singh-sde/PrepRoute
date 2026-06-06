@@ -1,0 +1,177 @@
+.page {
+  max-width: 1100px;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  color: #667085;
+
+  margin-bottom: 24px;
+}
+
+.successBanner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: #ecfdf3;
+
+  border: 1px solid #12b76a;
+  border-radius: 12px;
+
+  padding: 20px;
+
+  margin-bottom: 24px;
+}
+
+.successBanner h2 {
+  font-size: 20px;
+  color: #027a48;
+}
+
+.successBanner p {
+  margin-top: 6px;
+  color: #344054;
+}
+
+.check {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  background: #12b76a;
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 20px;
+}
+
+.tabs {
+  display: flex;
+
+  margin-top: 24px;
+  margin-bottom: 24px;
+
+  border: 1px solid #e4e7ec;
+  border-radius: 12px;
+
+  width: fit-content;
+
+  overflow: hidden;
+}
+
+.tab,
+.activeTab {
+  padding: 12px 24px;
+
+  border: none;
+
+  background: white;
+
+  cursor: pointer;
+}
+
+.activeTab {
+  background: #eef2ff;
+  color: #617af4;
+}
+
+.scheduleGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 24px;
+
+  margin-bottom: 24px;
+}
+
+.scheduleGrid label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 14px;
+}
+
+.scheduleGrid input {
+  width: 100%;
+  height: 44px;
+
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+
+  padding: 0 12px;
+}
+
+.section {
+  margin-top: 24px;
+}
+
+.section h3 {
+  margin-bottom: 20px;
+}
+
+.durationGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 16px;
+}
+
+.radioItem {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  border: 1px solid #d0d5dd;
+  border-radius: 10px;
+
+  padding: 14px;
+
+  cursor: pointer;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+
+  gap: 16px;
+
+  margin-top: 32px;
+}
+
+.cancelBtn {
+  height: 44px;
+
+  padding: 0 24px;
+
+  border-radius: 8px;
+  border: 1px solid #d0d5dd;
+
+  background: white;
+
+  cursor: pointer;
+}
+
+.confirmBtn {
+  height: 44px;
+
+  padding: 0 24px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #617af4;
+  color: white;
+
+  cursor: pointer;
+}
