@@ -1,0 +1,115 @@
+.card {
+  width: 100%;
+
+  background: #fff;
+
+  border: 1px solid #e4e7ec;
+  border-radius: 12px;
+
+  padding: 20px;
+
+  position: relative;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+}
+
+.badge {
+  background: #09114d;
+
+  color: white;
+
+  padding: 4px 12px;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+}
+
+.editBtn {
+  border: none;
+  background: transparent;
+
+  cursor: pointer;
+
+  color: #617af4;
+  font-size: 18px;
+}
+
+.chapterRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-bottom: 24px;
+}
+
+.chapterRow h3 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.easy {
+  background: #34c5aa;
+  color: white;
+
+  padding: 4px 14px;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.details span {
+  color: #667085;
+  font-size: 13px;
+}
+
+.details p {
+  margin-top: 4px;
+  color: #344054;
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  margin-top: 4px;
+}
+
+.tag {
+  border: 1px solid #f4b844;
+
+  color: #f4b844;
+
+  border-radius: 8px;
+
+  padding: 4px 10px;
+
+  font-size: 12px;
+}
+
+.stats {
+  position: absolute;
+
+  right: 20px;
+  bottom: 20px;
+
+  display: flex;
+  gap: 20px;
+
+  font-size: 14px;
+
+  color: #667085;
+}

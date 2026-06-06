@@ -1,0 +1,180 @@
+.page {
+  display: flex;
+  height: 100%;
+}
+
+.content {
+  flex: 1;
+
+  padding: 24px;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  color: #667085;
+}
+
+.publishBtn {
+  height: 44px;
+
+  padding: 0 28px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #617af4;
+  color: white;
+
+  cursor: pointer;
+}
+
+.questionHeader {
+  margin-top: 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.questionHeader h3 {
+  font-size: 20px;
+}
+
+.questionHeader span {
+  color: #98a2b3;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+.actions button {
+  height: 40px;
+
+  padding: 0 18px;
+
+  border-radius: 8px;
+  border: 1px solid #d0d5dd;
+
+  background: white;
+
+  cursor: pointer;
+}
+
+.editorCard {
+  margin-top: 20px;
+
+  border: 1px solid #d0d5dd;
+  border-radius: 12px;
+
+  overflow: hidden;
+}
+
+.editorCard textarea {
+  width: 100%;
+  height: 180px;
+
+  border: none;
+  resize: none;
+
+  padding: 16px;
+
+  outline: none;
+}
+
+.optionsSection {
+  margin-top: 28px;
+}
+
+.optionsSection h4 {
+  margin-bottom: 16px;
+}
+
+.optionRow {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 16px;
+}
+
+.optionRow input[type="text"] {
+  flex: 1;
+
+  height: 48px;
+
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+
+  padding: 0 14px;
+}
+
+.explanation {
+  margin-top: 24px;
+}
+
+.explanation label {
+  display: block;
+
+  margin-bottom: 10px;
+
+  font-weight: 500;
+}
+
+.explanation textarea {
+  width: 100%;
+  height: 140px;
+
+  border: 1px solid #d0d5dd;
+  border-radius: 12px;
+
+  padding: 16px;
+
+  resize: none;
+}
+
+.footerActions {
+  display: flex;
+  justify-content: flex-end;
+
+  gap: 16px;
+
+  margin-top: 24px;
+}
+
+.saveBtn {
+  background: white;
+
+  border: 1px solid #d0d5dd;
+
+  height: 44px;
+  padding: 0 20px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+}
+
+.nextBtn {
+  background: #617af4;
+  color: white;
+
+  border: none;
+
+  height: 44px;
+  padding: 0 28px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+}
