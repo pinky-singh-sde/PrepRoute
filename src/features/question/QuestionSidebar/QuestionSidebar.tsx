@@ -1,3 +1,4 @@
+
 import styles from "./QuestionSidebar.module.scss";
 
 export interface QuestionItem {
@@ -10,10 +11,7 @@ interface QuestionSidebarProps {
   questions: QuestionItem[];
   selectedQuestionId: string;
   totalQuestions: number;
-
-  onSelectQuestion: (
-    questionId: string
-  ) => void;
+  onSelectQuestion: (questionId: string) => void;
 }
 
 export default function QuestionSidebar({
@@ -28,9 +26,7 @@ export default function QuestionSidebar({
         <h4>Question Creation</h4>
 
         <span>
-          Total Questions :
-          {" "}
-          {totalQuestions}
+          Total Questions : {totalQuestions}
         </span>
       </div>
 
@@ -38,47 +34,31 @@ export default function QuestionSidebar({
         {questions.map((question) => (
           <button
             key={question.id}
-            className={`${styles.questionItem}
-              ${
-                selectedQuestionId ===
-                question.id
-                  ? styles.active
-                  : ""
-              }
-            `}
+            type="button"
+            className={`${styles.questionItem} ${
+              selectedQuestionId === question.id
+                ? styles.active
+                : ""
+            }`}
             onClick={() =>
-              onSelectQuestion(
-                question.id
-              )
+              onSelectQuestion(question.id)
             }
           >
-            <div
-              className={
-                styles.leftContent
-              }
-            >
-              <span
-                className={
-                  question.completed
-                    ? styles.completed
-                    : styles.pending
-                }
-              >
-                {question.completed
-                  ? "✓"
-                  : "○"}
-              </span>
+            <div className={styles.leftContent}>
+              {question.completed ? (
+                <span className={styles.completed}>
+                  ✓
+                </span>
+              ) : (
+                <span className={styles.pending} />
+              )}
 
-              <span>
+              <span className={styles.title}>
                 {question.title}
               </span>
             </div>
 
-            <span
-              className={
-                styles.arrow
-              }
-            >
+            <span className={styles.arrow}>
               ›
             </span>
           </button>

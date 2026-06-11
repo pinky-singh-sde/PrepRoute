@@ -1,11 +1,44 @@
 import { useState } from "react";
 
-import { MainLayout } from "../../components/layout";
-import { TestSummaryCard } from "../../features/test/TestSummaryCard";
-
 import styles from "./PublishTest.module.scss";
 
+import { QuestionSidebar } from "../../features/question/QuestionSidebar";
+import { TestSummaryCard } from "../../features/test/TestSummaryCard";
+
 type PublishMode = "now" | "schedule";
+
+const mockQuestions = [
+  {
+    id: "1",
+    title: "Question 1",
+    completed: true,
+  },
+  {
+    id: "2",
+    title: "Question 2",
+    completed: true,
+  },
+  {
+    id: "3",
+    title: "Question 3",
+    completed: true,
+  },
+  {
+    id: "4",
+    title: "Question 4",
+    completed: true,
+  },
+  {
+    id: "5",
+    title: "Question 5",
+    completed: true,
+  },
+  {
+    id: "6",
+    title: "Question 6",
+    completed: true,
+  },
+];
 
 export default function PublishTest() {
   const [mode, setMode] =
@@ -14,36 +47,35 @@ export default function PublishTest() {
   const [duration, setDuration] =
     useState("always");
 
+  const [selectedQuestionId, setSelectedQuestionId] =
+    useState("1");
+
   return (
-    <MainLayout>
-      <div className={styles.page}>
-        {/* Breadcrumb */}
+    <div className={styles.page}>
+      {/* Left Panel */}
 
+      <QuestionSidebar
+        questions={mockQuestions}
+        totalQuestions={50}
+        selectedQuestionId={selectedQuestionId}
+        onSelectQuestion={setSelectedQuestionId}
+      />
+
+      {/* Right Content */}
+
+      <div className={styles.content}>
         <div className={styles.breadcrumb}>
-          Test Creation /
-          Create Test /
-          Question Creation /
-          Publish Test
+          Test Creation / Create Test /
+          Question Creation / Publish Test
         </div>
-
-        {/* Success Banner */}
 
         <div className={styles.successBanner}>
-          <div>
-            <h2>Test Created</h2>
+          <h2>Test Created</h2>
 
-            <p>
-              All 50 Questions have been
-              created successfully.
-            </p>
-          </div>
-
-          <div className={styles.check}>
-            ✓
-          </div>
+          <span>
+            ✓ All 50 Questions Done
+          </span>
         </div>
-
-        {/* Summary */}
 
         <TestSummaryCard
           testType="Chapter Wise"
@@ -62,7 +94,7 @@ export default function PublishTest() {
           marks={250}
         />
 
-        {/* Tabs */}
+        {/* Publish Tabs */}
 
         <div className={styles.tabs}>
           <button
@@ -92,92 +124,38 @@ export default function PublishTest() {
           </button>
         </div>
 
-        {/* Schedule Fields */}
+        {/* Schedule */}
 
         {mode === "schedule" && (
-          <div
-            className={styles.scheduleGrid}
-          >
-            <div>
-              <label>
-                Select Date
-              </label>
-
-              <input
-                type="date"
-              />
-            </div>
-
-            <div>
-              <label>
-                Select Time
-              </label>
-
-              <input
-                type="time"
-              />
-            </div>
+          <div className={styles.scheduleGrid}>
+            <input type="date" />
+            <input type="time" />
           </div>
         )}
 
-        {/* Live Until */}
+        {/* Duration */}
 
         <div className={styles.section}>
           <h3>Live Until</h3>
 
-          <div
-            className={
-              styles.durationGrid
-            }
-          >
+          <div className={styles.durationGrid}>
             {[
-              {
-                id: "always",
-                label:
-                  "Always Available",
-              },
-              {
-                id: "1week",
-                label: "1 Week",
-              },
-              {
-                id: "2week",
-                label: "2 Weeks",
-              },
-              {
-                id: "3week",
-                label: "3 Weeks",
-              },
-              {
-                id: "1month",
-                label: "1 Month",
-              },
-              {
-                id: "custom",
-                label:
-                  "Custom Duration",
-              },
+              "Always Available",
+              "1 Week",
+              "2 Weeks",
+              "3 Weeks",
+              "1 Month",
+              "Custom Duration",
             ].map((item) => (
               <label
-                key={item.id}
-                className={
-                  styles.radioItem
-                }
+                key={item}
+                className={styles.radioItem}
               >
                 <input
                   type="radio"
-                  checked={
-                    duration ===
-                    item.id
-                  }
-                  onChange={() =>
-                    setDuration(
-                      item.id
-                    )
-                  }
+                  name="duration"
                 />
-
-                {item.label}
+                {item}
               </label>
             ))}
           </div>
@@ -186,51 +164,26 @@ export default function PublishTest() {
         {/* Custom Duration */}
 
         {duration === "custom" && (
-          <div
-            className={styles.scheduleGrid}
-          >
-            <div>
-              <label>
-                End Date
-              </label>
-
-              <input
-                type="date"
-              />
-            </div>
-
-            <div>
-              <label>
-                End Time
-              </label>
-
-              <input
-                type="time"
-              />
-            </div>
+          <div className={styles.scheduleGrid}>
+            <input type="date" />
+            <input type="time" />
           </div>
         )}
 
-        {/* Footer */}
-
         <div className={styles.footer}>
           <button
-            className={
-              styles.cancelBtn
-            }
+            className={styles.cancelBtn}
           >
             Cancel
           </button>
 
           <button
-            className={
-              styles.confirmBtn
-            }
+            className={styles.confirmBtn}
           >
             Confirm
           </button>
         </div>
       </div>
-    </MainLayout>
+    </div>
   );
 }

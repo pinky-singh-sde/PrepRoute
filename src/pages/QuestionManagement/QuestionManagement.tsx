@@ -45,7 +45,7 @@ export default function QuestionManagement() {
   useState(false);
 
   return (
-    <MainLayout>
+
       <div className={styles.page}>
         {/* Sidebar */}
 
@@ -230,6 +230,6 @@ export default function QuestionManagement() {
           </div>
         </div>
       </div>
-    </MainLayout>
+ 
   );
 }
