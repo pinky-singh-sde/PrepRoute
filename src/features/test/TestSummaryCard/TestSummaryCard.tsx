@@ -1,31 +1,31 @@
 import styles from "./TestSummaryCard.module.scss";
 
 interface TestSummaryCardProps {
-  testType: string;
-  chapter: string;
-  difficulty: string;
+  testType?: string;
+  chapter?: string;
+  difficulty?: string;
 
-  subject: string;
-  topics: string[];
-  subTopics: string[];
+  subject?: string;
+  topics?: string[];
+  subTopics?: string[];
 
-  duration: number;
-  questions: number;
-  marks: number;
+  duration?: number;
+  questions?: number;
+  marks?: number;
 
   onEdit?: () => void;
 }
 
 export default function TestSummaryCard({
-  testType,
-  chapter,
-  difficulty,
-  subject,
-  topics,
-  subTopics,
-  duration,
-  questions,
-  marks,
+  testType = "-",
+  chapter = "-",
+  difficulty = "-",
+  subject = "-",
+  topics = [],
+  subTopics = [],
+  duration = 0,
+  questions = 0,
+  marks = 0,
   onEdit,
 }: TestSummaryCardProps) {
   return (
@@ -37,12 +37,15 @@ export default function TestSummaryCard({
           {testType}
         </span>
 
-        <button
-          className={styles.editBtn}
-          onClick={onEdit}
-        >
-          ✎
-        </button>
+        {onEdit && (
+          <button
+            type="button"
+            className={styles.editBtn}
+            onClick={onEdit}
+          >
+            ✎
+          </button>
+        )}
       </div>
 
       {/* Chapter */}
@@ -67,14 +70,18 @@ export default function TestSummaryCard({
           <span>Topic</span>
 
           <div className={styles.tags}>
-            {topics.map((item) => (
-              <div
-                key={item}
-                className={styles.tag}
-              >
-                {item}
-              </div>
-            ))}
+            {topics.length > 0 ? (
+              topics.map((item) => (
+                <div
+                  key={item}
+                  className={styles.tag}
+                >
+                  {item}
+                </div>
+              ))
+            ) : (
+              <p>No Topics</p>
+            )}
           </div>
         </div>
 
@@ -82,14 +89,18 @@ export default function TestSummaryCard({
           <span>Sub Topic</span>
 
           <div className={styles.tags}>
-            {subTopics.map((item) => (
-              <div
-                key={item}
-                className={styles.tag}
-              >
-                {item}
-              </div>
-            ))}
+            {subTopics.length > 0 ? (
+              subTopics.map((item) => (
+                <div
+                  key={item}
+                  className={styles.tag}
+                >
+                  {item}
+                </div>
+              ))
+            ) : (
+              <p>No Sub Topics</p>
+            )}
           </div>
         </div>
       </div>

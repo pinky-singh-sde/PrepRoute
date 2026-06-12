@@ -1,27 +1,31 @@
 import Modal from "../Modal";
 import styles from "./EditTestModal.module.scss";
+import { useState, useEffect } from "react";
+import { useTestStore } from "../../../store/testStore";
 
-import {
-  Input,
-  Select,
-  Radio,
-  Button,
-} from "../../common";
+import { Input, Select, Radio, Button } from "../../common";
 
 interface EditTestModalProps {
   open: boolean;
   onClose: () => void;
 }
 
-export default function EditTestModal({
-  open,
-  onClose,
-}: EditTestModalProps) {
+export default function EditTestModal({ open, onClose }: EditTestModalProps) {
+  const { testInfo } = useTestStore();
+
+  const [testName, setTestName] = useState("");
+
+  const [difficulty, setDifficulty] = useState("easy");
+
+  useEffect(() => {
+    if (testInfo) {
+      setTestName(testInfo.name || "");
+
+      setDifficulty(testInfo.difficulty || "easy");
+    }
+  }, [testInfo]);
   return (
-    <Modal
-      open={open}
-      onClose={onClose}
-    >
+    <Modal open={open} onClose={onClose}>
       <div className={styles.header}>
         <h2>Edit Test</h2>
       </div>
@@ -29,11 +33,7 @@ export default function EditTestModal({
       {/* Tabs */}
 
       <div className={styles.tabs}>
-        <button
-          className={styles.active}
-        >
-          Chapter Wise
-        </button>
+        <button className={styles.active}>Chapter Wise</button>
 
         <button>PYQ</button>
 
@@ -43,57 +43,40 @@ export default function EditTestModal({
       {/* Form */}
 
       <div className={styles.grid}>
-        <Select
-          label="Subject"
-          options={[]}
-        />
-
+        <Input label="Subject" value={testInfo?.subject || ""} />
         <Input
           label="Name Of Test"
-          placeholder="Enter name"
+          value={testName}
+          onChange={(e) => setTestName(e.target.value)}
         />
-
-        <Select
-          label="Topic"
-          options={[]}
-        />
-
-        <Select
-          label="Sub Topic"
-          options={[]}
-        />
+        <Input label="Topic" value={testInfo?.topics?.join(", ") || ""} />
 
         <Input
-          label="Duration"
-          placeholder="60"
+          label="Sub Topic"
+          value={testInfo?.sub_topics?.join(", ") || ""}
         />
+        <Input label="Duration" value={String(testInfo?.total_time || "")} />
 
         <div>
-          <label>
-            Difficulty Level
-          </label>
+          <label>Difficulty Level</label>
 
-          <div
-            className={
-              styles.radioGroup
-            }
-          >
+          <div className={styles.radioGroup}>
             <Radio
               label="Easy"
-              checked
-              onChange={() => {}}
+              checked={difficulty === "easy"}
+              onChange={() => setDifficulty("easy")}
             />
 
             <Radio
               label="Medium"
-              checked={false}
-              onChange={() => {}}
+              checked={difficulty === "medium"}
+              onChange={() => setDifficulty("medium")}
             />
 
             <Radio
               label="Difficult"
-              checked={false}
-              onChange={() => {}}
+              checked={difficulty === "difficult"}
+              onChange={() => setDifficulty("difficult")}
             />
           </div>
         </div>
@@ -101,52 +84,38 @@ export default function EditTestModal({
 
       {/* Marking */}
 
-      <h3
-        className={
-          styles.sectionTitle
-        }
-      >
-        Marking Scheme
-      </h3>
+      <h3 className={styles.sectionTitle}>Marking Scheme</h3>
 
-      <div
-        className={styles.markingGrid}
-      >
-        <Input
-          label="Wrong Answer"
-          placeholder="-1"
-        />
+      <div className={styles.markingGrid}>
+        <Input label="Wrong Answer" value="-1" />
 
-        <Input
-          label="Unattempted"
-          placeholder="0"
-        />
+        <Input label="Unattempted" value="0" />
 
-        <Input
-          label="Correct Answer"
-          placeholder="+5"
-        />
+        <Input label="Correct Answer" value="5" />
 
         <Input
           label="No. Questions"
-          placeholder="50"
+          value={String(testInfo?.total_questions || "")}
         />
 
         <Input
           label="Total Marks"
-          placeholder="250"
+          value={String(testInfo?.total_marks || "")}
         />
       </div>
 
       <div className={styles.footer}>
-        <Button
-          variant="secondary"
-          onClick={onClose}
-        >
+        <Button variant="secondary" onClick={onClose}>
           Cancel
         </Button>
 
-        <Button>
+        <Button
+          onClick={() => {
+            console.log("Update Test");
+
+            onClose();
+          }}
+        >
           Save
         </Button>
       </div>

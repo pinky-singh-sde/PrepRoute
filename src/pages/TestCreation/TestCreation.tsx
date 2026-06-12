@@ -26,8 +26,11 @@ export default function TestCreation() {
 
   const [difficulty, setDifficulty] = useState("easy");
   const navigate = useNavigate();
-
-  const setTestId = useTestStore((state) => state.setTestId);
+  const {
+    setTestId,
+    setTestInfo,
+  } = useTestStore();
+  // const setTestId = useTestStore((state) => state.setTestId);
 
   const [subjects, setSubjects] = useState<any[]>([]);
   const [topics, setTopics] = useState<any[]>([]);
@@ -136,8 +139,52 @@ export default function TestCreation() {
         "Create Test Response:",
         response
       );
+
+      setTestId(
+        response.data.id
+      );
+      const subjectName =
+  subjects.find(
+    (s) => s.id === selectedSubject
+  )?.name || "";
+
+const topicName =
+  topics.find(
+    (t) => t.id === selectedTopic
+  )?.name || "";
+
+const subTopicName =
+  subTopics.find(
+    (s) => s.id === selectedSubTopic
+  )?.name || "";
+      
+  setTestInfo({
+    ...response.data,
   
-      setTestId(response.data.id);
+    subject: subjectName,
+  
+    topics: [topicName],
+  
+    sub_topics: [subTopicName],
+  
+    difficulty,
+  
+    total_time: Number(duration),
+  
+    total_marks: Number(totalMarks),
+  
+    total_questions:
+      Number(totalQuestions),
+  
+    name: testName,
+  
+    type:
+      testTypeMap[
+        activeTab as keyof typeof testTypeMap
+      ],
+  });
+  
+     
   
       navigate("/tests/questions");
     } catch (error: any) {
