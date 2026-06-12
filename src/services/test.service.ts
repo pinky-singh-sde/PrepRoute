@@ -15,3 +15,15 @@ export const getTestById = async (
 
   return response.data;
 };
+
+
+export const createTest = async (
+  payload: any
+) => {
+  const response = await api.post(
+    "/tests",
+    payload
+  );
+
+  return response.data;
+};
